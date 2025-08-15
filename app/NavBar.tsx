@@ -8,6 +8,8 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
+import Button from '@mui/material/Button';
+import Link from 'next/link';
 import SearchIcon from '@mui/icons-material/Search';
 
 const Search = styled('div')(({ theme }) => ({
@@ -17,7 +19,7 @@ const Search = styled('div')(({ theme }) => ({
   '&:hover': {
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
-  marginLeft: 0,
+  marginLeft: theme.spacing(3),
   width: '100%',
   [theme.breakpoints.up('sm')]: {
     marginLeft: theme.spacing(1),
@@ -52,6 +54,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+const navItems = [
+  { label: 'Products', path: '/products' },
+  { label: 'About', path: '/about' },
+  { label: 'Contact', path: '/contact' },
+];
+
 export default function NavBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -69,11 +77,28 @@ export default function NavBar() {
           <Typography
             variant="h6"
             noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+            component={Link}
+            href="/"
+            sx={{
+              display: { xs: 'none', sm: 'block' },
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
           >
-            MUI
+            Ecommerce
           </Typography>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, ml: 2 }}>
+            {navItems.map((item) => (
+              <Button
+                key={item.label}
+                component={Link}
+                href={item.path}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                {item.label}
+              </Button>
+            ))}
+          </Box>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
