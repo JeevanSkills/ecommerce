@@ -1,36 +1,18 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# dependencies
+# Local Environment Variables
+# Exclude local environment files from version control for security.
+# Your .env.local file should contain your secret database credentials.
+.env*.local
+
+# Dependencies
 /node_modules
-/.pnp
-.pnp.js
-.yarn/install-state.gz
 
-# testing
-/coverage
-
-# next.js
+# Build directory
 /.next/
-/out/
 
-# production
-/build
-
-# misc
+# Misc
 .DS_Store
-*.pem
-
-# debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# local env files
-.env*.local
-
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
